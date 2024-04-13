@@ -1,0 +1,107 @@
+﻿<Window x:Class="Lab05_daea_6C24B.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab05_daea_6C24B"
+        mc:Ignorable="d"
+        Title="Insertar Empleado" Height="600" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Encabezado -->
+        <TextBlock Text="Insertar y Actualizar Empleado" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" Grid.Row="0"/>
+
+        <!-- Información Personal -->
+        <Border BorderBrush="Gray" BorderThickness="0,0,0,1" Padding="5" Grid.Row="1" Margin="0,10,0,5">
+        </Border>
+        <StackPanel Margin="0,5" Grid.Row="1">
+            <!-- Campos de Información Personal -->
+            <StackPanel Orientation="Horizontal" Margin="0 5">
+                <TextBlock Text="Id Empleado" Width="150"/>
+                <TextBox x:Name="IdEmpleadoTextBox" Width="200" Margin="0,0,20,0">10</TextBox>
+                <TextBlock Text="Apellidos" Width="150"/>
+                <TextBox x:Name="ApellidosTextBox" Width="200">Davokos</TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5">
+                <TextBlock Text="Nombre" Width="150"/>
+                <TextBox x:Name="NombreTextBox" Width="200" Margin="0,0,20,0">Nency</TextBox>
+                <TextBlock Text="Cargo" Width="150"/>
+                <TextBox x:Name="CargoTextBox" Width="200">Representante de ventas</TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5">
+                <TextBlock Text="Tratamiento" Width="150"/>
+                <TextBox x:Name="TratamientoTextBox" Width="200" Margin="0,0,20,0">Sra.</TextBox>
+                <TextBlock Text="Fecha de Nacimiento" Width="150"/>
+                <TextBox x:Name="FechaNacimientoTextBox" Width="200">1948-12-09</TextBox>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Información de Contacto -->
+        <Border BorderBrush="Gray" BorderThickness="0,0,0,1" Padding="5" Grid.Row="2" Margin="0,5">
+        </Border>
+        <StackPanel Margin="0,5" Grid.Row="2">
+            <!-- Campos de Información de Contacto -->
+            <StackPanel Orientation="Horizontal" Margin="0 5">
+                <TextBlock Text="Dirección" Width="150"/>
+                <TextBox x:Name="DireccionTextBox" Width="200" Margin="0,0,20,0">507-20th Ave Ep. 24</TextBox>
+                <TextBlock Text="Ciudad" Width="150"/>
+                <TextBox x:Name="CiudadTextBox" Width="200">Seattle</TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5">
+                <TextBlock Text="Región" Width="150"/>
+                <TextBox x:Name="RegionTextBox" Width="200" Margin="0,0,20,0">WA</TextBox>
+                <TextBlock Text="Código Postal" Width="150"/>
+                <TextBox x:Name="CodigoPostalTextBox" Width="200">98122</TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5">
+                <TextBlock Text="País" Width="150"/>
+                <TextBox x:Name="PaisTextBox" Width="200" Margin="0,0,20,0">EE.UU</TextBox>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Detalles de Empleo -->
+        <Border BorderBrush="Gray" BorderThickness="0,0,0,1" Padding="5" Grid.Row="3" Margin="0,5">
+        </Border>
+        <StackPanel Margin="0,5" Grid.Row="3">
+            <!-- Campos de Detalles de Empleo -->
+            <StackPanel Orientation="Horizontal" Margin="0 5">
+                <TextBlock Text="Fecha de Contratación" Width="150"/>
+                <TextBox x:Name="FechaContratacionTextBox" Width="200" Margin="0,0,20,0">1992-05-01</TextBox>
+                <TextBlock Text="Teléfono" Width="150"/>
+                <TextBox x:Name="TelefonoTextBox" Width="200">(206)-985-75457</TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5">
+                <TextBlock Text="Extensión" Width="150"/>
+                <TextBox x:Name="ExtensionTextBox" Width="200" Margin="0,0,20,0">5457</TextBox>
+                <TextBlock Text="Notas" Width="150"/>
+                <TextBox x:Name="NotasTextBox" Width="200">Su formación incluye una licenciatura en Psicología.</TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5">
+                <TextBlock Text="Jefe" Width="150"/>
+                <TextBox x:Name="JefeTextBox" Width="200" Margin="0,0,20,0">2</TextBox>
+                <TextBlock Text="Sueldo Básico" Width="150"/>
+                <TextBox x:Name="SueldoBasicoTextBox" Width="200">1000.00</TextBox>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Botón de Insertar Empleado -->
+        <Button Content="Insertar Empleado" Click="InsertarEmpleadoButton_Click" Margin="0,10,0,0" Grid.Row="4" HorizontalAlignment="Right" Width="150"/>
+        <Button Content="Listar Empleado" Click="ListarEmpleadoButton_Click" Margin="0,10,0,0" Grid.Row="4" HorizontalAlignment="Center" Width="150"/>
+        <Button Content="Actualizar Empleado" Click="ActualizarEmpleadoButton_Click" Margin="0,10,0,0" Grid.Row="4" HorizontalAlignment="Left" Width="150"/>
+        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+
+            <!-- DataGrid -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <DataGrid x:Name="dataEmpleados" Height="150" Width="500" />
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</Window>
