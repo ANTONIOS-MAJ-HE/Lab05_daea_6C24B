@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Lab05_daea_6C24B.Model;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Lab05_daea_6C24B
@@ -19,7 +20,7 @@ namespace Lab05_daea_6C24B
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string connectionString = "Data Source=LAB1504-16\\SQLEXPRESS;Initial Catalog=Neptuno;User Id=admin;Password=admin";
+        public string connectionString = "Data Source=LAB1504-14\\SQLEXPRESS;Initial Catalog=Neptuno;User Id=admin;Password=admin";
         public List<Clientes> ListaClientes { get; set; }
 
         public MainWindow()
@@ -113,6 +114,32 @@ namespace Lab05_daea_6C24B
             }
         }
 
+        private void EliminarEmpleadoButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand command = new SqlCommand("EliminarEmpleado", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // Parámetros del procedimiento almacenado
+                    command.Parameters.AddWithValue("@IdEmpleado", int.Parse(IdEmpleadoTextBox.Text));
+
+                    // Ejecutar el comando
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Empleado eliminado correctamente.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar empleado: " + ex.Message);
+            }
+        }
+
         private void ListarEmpleadoButton_Click(object sender, RoutedEventArgs e)
         {
             List<Clientes> clientes = new List<Clientes>();
@@ -151,5 +178,20 @@ namespace Lab05_daea_6C24B
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void dataEmpleados_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dataEmpleados.SelectedItem is Clientes guia)
+            {
+                IdEmpleadoTextBox.Text = guia.idCliente.ToString(); //es entero convertir
+                NombreTextBox.Text = guia.NombreCompañia;
+                CargoTextBox.Text = guia.NombreContacto;
+                TratamientoTextBox.Text = guia.CargoContacto;
+                FechaNacimientoTextBox.Text = guia.Direccion.ToString(); //es date time convertir
+                FechaContratacionTextBox.Text = guia.Ciudad.ToString(); //es date time convertir
+            }
+        }
+
+        
     }
 }

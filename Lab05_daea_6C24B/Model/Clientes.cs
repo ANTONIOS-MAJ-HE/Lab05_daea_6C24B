@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab05_daea_6C24B
+namespace Lab05_daea_6C24B.Model
 {
     public class Clientes
     {
         public int idCliente { get; set; }
-        public String NombreCompañia { get; set; }
-        public String NombreContacto { get; set; }
-        public String CargoContacto { get; set; }
+        public string NombreCompañia { get; set; }
+        public string NombreContacto { get; set; }
+        public string CargoContacto { get; set; }
         public DateTime Direccion { get; set; }
         public DateTime Ciudad { get; set; }
 
@@ -24,7 +24,7 @@ namespace Lab05_daea_6C24B
             CargoContacto = cargoContacto;
             Direccion = direccion;
             Ciudad = ciudad;
-          
+
         }
 
     }
